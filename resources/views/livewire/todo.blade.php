@@ -1,34 +1,18 @@
 <div>
     <x-slot:title>Todo</x-slot:title>
-    @if (session('success'))
-        <div class="toast-container position-fixed bottom-0 end-0 p-3">
-            <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive"
-                aria-atomic="true" data-bs-delay="3000">
-                <div class="d-flex">
-                    <div class="toast-body">
-                        {{ session('success') }}
-                    </div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                        aria-label="Close"></button>
-                </div>
-            </div>
-        </div>
-    @endif
-
     <div class="card">
         <div class="card-body">
-            <form wire:submit='save'>
+            <form wire:submit.prevent='save'>
                 <div class="mb-3">
                     <label for="todo" class="form-label">Activity</label>
-                    <input type="text" class="form-control" id="todo" wire:model='todo'
-                        aria-describedby="error">
+                    <input type="text" class="form-control" id="todo" wire:model='todo' aria-describedby="error">
                     <div id="error" class="form- text-danger">
                         @error('todo')
                             {{ $message }}
                         @enderror
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-primary fs-5"><i class="ti ti-circle-plus"></i></button>
             </form>
         </div>
     </div>
@@ -48,8 +32,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($todos)
-                    @endif
                     @forelse ($todos as $item)
                         <tr>
                             <td><span
@@ -57,10 +39,10 @@
                             </td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <button class="btn btn-primary"
-                                        wire:click='checklist({{ $item->id }})'>Check</button>
+                                    <button class="btn btn-primary" wire:click='checklist({{ $item->id }})'><i
+                                            class="ti ti-checkbox fs-5"></i></button>
                                     <button class="btn btn-danger" wire:click='delete({{ $item->id }})'>
-                                        Delete</button>
+                                        <i class="ti ti-square-rounded-x fs-5"></i></button>
                                 </div>
                             </td>
                         </tr>

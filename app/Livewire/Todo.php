@@ -27,7 +27,7 @@ class Todo extends Component
             'todo' => 'required',
         ]);
         ModelsTodo::create($validated);
-        return redirect()->to('/')->with('success', 'Todo ' . $this->todo . ' Was Created');
+        return $this->redirect('todo', navigate: true);
     }
 
     public function checklist($id)
@@ -36,13 +36,13 @@ class Todo extends Component
         $data->update([
             'is_complete' => 1,
         ]);
-        return redirect()->to('/')->with('success', 'Todo ' . $this->todo . ' Was Done');
+        return $this->redirect('todo', navigate: true);
     }
 
     public function delete($id)
     {
         $data = ModelsTodo::findOrFail($id);
         $data->delete();
-        return redirect()->to('/')->with('success', 'Todo ' . $this->todo . ' Was Deleted');
+        return $this->redirect('todo', navigate: true);
     }
 }

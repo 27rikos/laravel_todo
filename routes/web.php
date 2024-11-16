@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Auth;
+use App\Livewire\Logout;
 use App\Livewire\Todo;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +20,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', Todo::class);
+Route::get('todo', Todo::class);
+Route::get('/', Auth::class);
+Route::get('logout', Logout::class);

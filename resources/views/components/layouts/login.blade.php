@@ -13,9 +13,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
     <title>{{ $title ?? 'Page Title' }}</title>
-    @livewireStyles
 </head>
-
 <style>
     * {
         font-family: "Poppins", sans-serif;
@@ -23,32 +21,8 @@
 </style>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#"><span class="fw-bold">To</span><span
-                    class="fw-bold text-primary">Do</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <!-- Menu Home -->
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('todo') }}" wire:navigate>Home</a>
-                    </li>
-                    <!-- Tombol logout dengan Livewire -->
-                    <livewire:logout></livewire:logout>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    {{ $slot }}
 
-    <div class="container pt-5">
-
-        {{ $slot }}
-    </div>
-    @livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
